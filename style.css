@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    display: flex;
+    width: 850px;
+    height: 550px;
+    background: #ffffff;
+    border-radius: 32px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+/* LEFT COLUMN */
+.todo-section {
+    flex: 1.2;
+    padding: 45px;
+    border-right: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.witty-title {
+    color: #0f172a;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-top: 4px;
+    margin-bottom: 30px;
+}
+
+.input-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+}
+
+#task-input:focus {
+    border-color: #06b6d4;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15);
+}
+
+#add-btn {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+}
+
+#add-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(6, 182, 212, 0.3);
+}
+
+#task-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    margin-bottom: 12px;
+}
+
+.task-item span {
+    flex: 1;
+    color: #334155;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* INTERACTIVE CHECK BUTTON */
+.check-btn {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.check-btn.clicked {
+    animation: buttonBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    border-color: transparent !important;
+}
+
+@keyframes buttonBounce {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4); }
+    70% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+/* RIGHT COLUMN */
+.jar-section {
+    flex: 0.9;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 45px;
+}
+
+/* THE GLASS JAR */
+.jar {
+    width: 240px;
+    height: 250px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.jar-lid {
+    width: 120px;
+    height: 16px;
+    background: #cbd5e1;
+    border-radius: 6px 6px 0 0;
+    margin: 0 auto;
+}
+
+.jar-body {
+    width: 240px;
+    height: 234px;
+    border: 5px solid #cbd5e1;
+    border-top: none;
+    border-radius: 0 0 45px 45px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.8) 100%);
+    
+    /* Strict Coordinate Explicit Grid System */
+    display: grid;
+    grid-template-columns: repeat(5, 36px);
+    grid-template-rows: repeat(3, 36px);
+    gap: 8px;
+    padding: 24px;
+    justify-content: center;
+    align-content: end; 
+}
+
+.jar-counter {
+    color: #475569;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+#count-num {
+    color: #06b6d4;
+    font-weight: 800;
+}
+
+/* MARBLE DESIGN */
+.marble {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    box-shadow: inset -3px -3px 6px rgba(0,0,0,0.2), 1px 2px 4px rgba(0,0,0,0.08);
+}
+
+.new-drop {
+    animation: realisticDrop 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes realisticDrop {
+    0% { transform: translateY(-200px); opacity: 0; }
+    15% { opacity: 1; }
+    50% { transform: translateY(0px) scaleY(0.8) scaleX(1.1); }
+    70% { transform: translateY(-18px) scaleY(1.05) scaleX(0.95); }
+    85% { transform: translateY(0px) scaleY(0.9) scaleX(1.03); }
+    100% { transform: translateY(0px) scaleY(1) scaleX(1); }
+}
+
+#restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#restart-btn:hover {
+    background-color: #fef2f2;
+    color: #ef4444;
+    border-color: #fca5a5;
+}
